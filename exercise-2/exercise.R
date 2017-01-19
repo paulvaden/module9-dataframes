@@ -13,7 +13,7 @@ new.salaries <- salaries + runif(100, -10000, 10000)
 
 # Create a data.frame 'salaries' by combining the 3 vectors you just made
 # Remember to set `stringsAsFactors=FALSE`!
-d.frame <- data.frame(employees, salaries, new.salaries)
+d.frame <- data.frame(employees, salaries, new.salaries, stringsAsFactors = FALSE)
 
 # Create a column 'raise' that stores the size of the raise between 2014 and 2015
 d.frame$raise <- d.frame$salaries - d.frame$new.salaries
@@ -26,24 +26,24 @@ d.frame$got.raise <- d.frame$raise >0
 ### cell rather than the whole row!)
 View(d.frame)
 # What was the 2015 salary of employee 57
-
+d.frame$new.salaries[57]
 
 # How many employees got a raise?
-
+length(which(d.frame$got.raise))
 
 # What was the value of the highest raise?
-
+max(d.frame$raise)
 
 # What was the "name" of the employee who received the highest raise?
-
+d.frame[d.frame$raise == max(d.frame$raise), "employees"]
 
 # What was the largest decrease in salaries between the two years?
-
+min(d.frame$raise)
 
 # What was the name of the employee who recieved largest decrease in salary?
-
+d.frame[d.frame$raise == min(d.frame$raise), "employees"]$employees
 # What was the average salary increase?
-
+mean(d.frame$raise)
 
 ### Bonus ###
 
